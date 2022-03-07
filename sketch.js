@@ -15,8 +15,8 @@ let pokeball6;
 
 function setup() {
   createCanvas(400, 400);
-  createButton("Start").mousePressed(startSketch);
   angleMode(DEGREES);
+  createButton("Start").mousePressed(startSketch);
   //frameRate(fr);
 
   pokeball1 = new Pokeball(width * .2, height * .05, 10, .5);
