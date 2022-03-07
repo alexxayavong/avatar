@@ -76,7 +76,6 @@ if(sketchStarted){
 }
 
 
-}
 
 //pokeball
 function drawPokeball() {
