@@ -29,7 +29,7 @@ function setup() {
 
 }
 
-funtion startSketch(){
+function startSketch(){
   mic = new p5.AudioIn();
   mic.start();
 
