@@ -2,6 +2,7 @@ let earWiggle;
 let earWiggle2;
 let mic;
 let micVar;
+let sketchStarted = false;
 let fr = 0;
 let circleX = 200
 let circleX2 = 350
@@ -14,42 +15,51 @@ let pokeball6;
 
 function setup() {
   createCanvas(400, 400);
-  mic = new p5.AudioIn();
-  mic.start();
+  createButton("Start").mousePressed(startSketch);
   angleMode(DEGREES);
   //frameRate(fr);
-  
+
   pokeball1 = new Pokeball(width * .2, height * .05, 10, .5);
   pokeball2 = new Pokeball(width * .6, height * .2, -10, 1.5);
   pokeball3 = new Pokeball(width * .05, height * .5, -60, 1.2);
   pokeball4 = new Pokeball(width * .4, height * .7, 15, 1);
   pokeball5 = new Pokeball(width * .3, height * .8, -30, 1.2);
   pokeball6 = new Pokeball(width * .8, height * .65, 25, 1);
-  
-  
+
+
 }
 
+funtion startSketch(){
+  mic = new p5.AudioIn();
+  mic.start();
+
+  sketchStarted = true;
+}
+
+
 function draw() {
+
+if(sketchStarted){
   background(95, 255, 165);
   fill(174, 117, 60); // fur color
-  
+
   //drawPokeball();
-  
+
   pokeball1.display();
-  pokeball2.display(); 
+  pokeball2.display();
   pokeball3.display();
   pokeball4.display();
   pokeball5.display();
   pokeball6.display();
-  
+
   pokeball1.move();
-  pokeball2.move();  
+  pokeball2.move();
   pokeball3.move();
   pokeball4.move();
   pokeball5.move();
   pokeball6.move();
 
-  
+
   drawFur();
   drawEar();
   drawRightEar();
@@ -60,6 +70,12 @@ function draw() {
   micVar = mic.getLevel();
   earWiggle = map(mic.getLevel(), 0, 0.1, 40, 30);
   earWiggle2 = map(mic.getLevel(), 0, 0.9, 1, 40);
+}
+
+
+}
+
+
 }
 
 //pokeball
@@ -216,9 +232,9 @@ function drawFur() {
 function drawArm() {
   //arms
   fill(174, 117, 60);
-  if (mouseX > width * 0.5) 
+  if (mouseX > width * 0.5)
     rotate(5);
-  if (mouseY > height * 0.5) 
+  if (mouseY > height * 0.5)
     rotate(-3);
   ellipse(width * 0.3, width * 1, width * 0.3, height * 0.7);
   push();
